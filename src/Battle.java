@@ -33,6 +33,7 @@ class Battle {
             if (monsters[i] != null){
 
                 // Calling attack() method of the monster at index i
+                // attack abstract method from class Monster is implemented into an array.
                 monsters[i].attack(monsters[i]);
             }
         }

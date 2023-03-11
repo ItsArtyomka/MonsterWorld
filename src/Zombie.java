@@ -1,41 +1,16 @@
 public class Zombie extends Monster {
-
-    public static String scream = "Raaaauuughhhh";
-
+    //---Constructor---
     public Zombie(String name) {
         super(name + " the Zombie", 5);
     }
 
-    // Overload this method to make SCREAMS
-//    @Override
-    public void growl(){
-        System.out.print(scream);
-//        super.growl();
+    //---Methods---
+    public void growl() {
+        System.out.println("Raaaauuughhhh");
     }
 
-    // This method overloads growl() to make SCREAMS
-    public void growl(boolean isLoud){
-        if (!isLoud){
-            growl();
-        } else {
-            System.out.print(scream.toUpperCase());
-            super.growl();
-        }
-    }
-
-    @Override
-    public void attack(){
-        super.attack();
-        growl();
-    }
-
-    @Override
+    // Zombie class implements the abstract method that is in Monster
     public void attack(Monster monster) {
-        damage(getForce());
-    }
-
-    @Override
-    protected int getForce() {
-        return force;
+        monster.damage(getForce());
     }
 }

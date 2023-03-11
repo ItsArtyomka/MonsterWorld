@@ -1,42 +1,20 @@
-@SuppressWarnings("CommentedOutCode")
+@SuppressWarnings({"UnusedReturnValue", "FieldMayBeFinal"})
 
-abstract class Monster {
+public abstract class Monster {
     //---Fields---
-    private String monsterName;
-    private static String scream;
+    private String name;
     private int force;
     private int hp = 15;
     private boolean destroyed = false;
 
-
-//    public Monster(){}
-
-    public Monster(String name, int power) {
-        this.monsterName = name;
-        this.force = power;
+    //---Constructor---
+    public Monster(String name, int force) {
+        this.name = name;
+        this.force = force;
         System.out.println("Monster " + name + " was created");
     }
 
-    //---Original Methods---
-//    void growl(){
-//        System.out.println(" Monster " + monsterName + " growled ");
-//    }
-
-//    void attack(){
-//        System.out.println("Monster " + monsterName + " attacked with damage " + force);
-//    }
-
-    //---Abstract Methods---
-    public abstract void attack(Monster monster);
-
-    protected boolean damage(int dhp) {
-        if (dhp > hp) {
-            return destroyed = true;
-        } else {
-            return destroyed = false;
-        }
-    }
-
+    //---Getters---
     protected int getForce() {
         return force;
     }
@@ -44,4 +22,24 @@ abstract class Monster {
     public boolean isDestroyed() {
         return destroyed;
     }
+
+    //---Method---
+    protected boolean damage(int dhp) {
+        // Subtracts the damage hp from the hp.
+        hp -= dhp;
+
+        // Logic for the death of the monster.
+        if (hp < 0) {
+            destroyed = true;
+            System.out.println("Monster " + name + " was destroyed");
+            return true;
+        }
+
+        return false;
+    }
+
+    //---Abstract Class---
+    // It is used and overridden by other monsters.
+    public abstract void attack(Monster monster);
+
 }
