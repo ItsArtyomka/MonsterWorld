@@ -10,7 +10,7 @@ public class Zombie extends Monster {
 
     @Override
     public void attack(Monster monster) {
-        damage(getForce());
+        monster.damage(getForce());
     }
 
 //    @Override

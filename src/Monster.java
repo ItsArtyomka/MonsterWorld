@@ -1,4 +1,4 @@
-@SuppressWarnings({"UnusedReturnValue", "FieldCanBeLocal", "FieldMayBeFinal", "ConstantValue", "IfStatementWithIdenticalBranches"})
+@SuppressWarnings({"UnusedReturnValue", "FieldMayBeFinal"})
 
 public abstract class Monster {
     private String name;
@@ -18,21 +18,17 @@ public abstract class Monster {
 
     public abstract void attack(Monster monster);
     protected boolean damage(int dhp){
-        if ((hp - dhp) <= 0){
-            return isDestroyed();
-        } else {
-            hp -= dhp;
+        hp -= dhp;
+        if (hp < 0){
+            destroyed = true;
+            System.out.println("Monster " + name + " was destroyed");
+            return true;
         }
 
-        return destroyed;
+        return false;
     }
 
     public boolean isDestroyed(){
-        if (hp <= 0){
-            destroyed = true;
-            return destroyed;
-        } else {
-            return destroyed;
-        }
+        return destroyed;
     }
 }
