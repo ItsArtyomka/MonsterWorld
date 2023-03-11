@@ -1,47 +1,38 @@
-@SuppressWarnings("CommentedOutCode")
+@SuppressWarnings({"UnusedReturnValue", "FieldCanBeLocal", "FieldMayBeFinal", "ConstantValue", "IfStatementWithIdenticalBranches"})
 
-abstract class Monster {
-    //---Fields---
-    private String monsterName;
-    private static String scream;
+public abstract class Monster {
+    private String name;
     private int force;
     private int hp = 15;
     private boolean destroyed = false;
 
-
-//    public Monster(){}
-
-    public Monster(String name, int power) {
-        this.monsterName = name;
-        this.force = power;
+    public Monster(String name, int force) {
+        this.name = name;
+        this.force = force;
         System.out.println("Monster " + name + " was created");
     }
 
-    //---Original Methods---
-//    void growl(){
-//        System.out.println(" Monster " + monsterName + " growled ");
-//    }
-
-//    void attack(){
-//        System.out.println("Monster " + monsterName + " attacked with damage " + force);
-//    }
-
-    //---Abstract Methods---
-    public abstract void attack(Monster monster);
-
-    protected boolean damage(int dhp) {
-        if (dhp > hp) {
-            return destroyed = true;
-        } else {
-            return destroyed = false;
-        }
-    }
-
-    protected int getForce() {
+    protected int getForce(){
         return force;
     }
 
-    public boolean isDestroyed() {
+    public abstract void attack(Monster monster);
+    protected boolean damage(int dhp){
+        if ((hp - dhp) <= 0){
+            return isDestroyed();
+        } else {
+            hp -= dhp;
+        }
+
         return destroyed;
+    }
+
+    public boolean isDestroyed(){
+        if (hp <= 0){
+            destroyed = true;
+            return destroyed;
+        } else {
+            return destroyed;
+        }
     }
 }

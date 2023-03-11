@@ -6,10 +6,9 @@ public class GiantSnake extends Monster {
         super(name + " the GiantSnake", 5);
     }
 
-    @Override
+//    @Override
     public void growl(){
         System.out.print(scream);
-//        super.growl();
     }
 
     public void growl(boolean loud){
@@ -23,9 +22,8 @@ public class GiantSnake extends Monster {
     }
 
     @Override
-    public void attack(){
+    public void attack(Monster monster){
         growl(true);
-//        super.attack();
         System.out.println("     ...and hid in the grass");
     }
 
