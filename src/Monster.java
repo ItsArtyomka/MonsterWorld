@@ -1,20 +1,47 @@
-public class Monster {
-    String monsterName;
-    public static String scream;
-    int attackDamage;
+@SuppressWarnings("CommentedOutCode")
 
-    public Monster(){}
+abstract class Monster {
+    //---Fields---
+    private String monsterName;
+    private static String scream;
+    private int force;
+    private int hp = 15;
+    private boolean destroyed = false;
 
-    public Monster(String name , int power){
+
+//    public Monster(){}
+
+    public Monster(String name, int power) {
         this.monsterName = name;
-        this.attackDamage = power;
+        this.force = power;
+        System.out.println("Monster " + name + " was created");
     }
 
-    void growl(){
-        System.out.println(" Monster " + monsterName + " growled ");
+    //---Original Methods---
+//    void growl(){
+//        System.out.println(" Monster " + monsterName + " growled ");
+//    }
+
+//    void attack(){
+//        System.out.println("Monster " + monsterName + " attacked with damage " + force);
+//    }
+
+    //---Abstract Methods---
+    public abstract void attack(Monster monster);
+
+    protected boolean damage(int dhp) {
+        if (dhp > hp) {
+            return destroyed = true;
+        } else {
+            return destroyed = false;
+        }
     }
 
-    void attack(){
-        System.out.println("Monster " + monsterName + " attacked with damage " + attackDamage);
+    protected int getForce() {
+        return force;
+    }
+
+    public boolean isDestroyed() {
+        return destroyed;
     }
 }

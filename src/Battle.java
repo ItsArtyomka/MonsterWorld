@@ -33,7 +33,7 @@ class Battle {
             if (monsters[i] != null){
 
                 // Calling attack() method of the monster at index i
-                monsters[i].attack();
+                monsters[i].attack(monsters[i]);
             }
         }
     }

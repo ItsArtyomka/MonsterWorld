@@ -9,7 +9,7 @@ public class GiantSnake extends Monster {
     @Override
     public void growl(){
         System.out.print(scream);
-        super.growl();
+//        super.growl();
     }
 
     public void growl(boolean loud){
@@ -18,14 +18,14 @@ public class GiantSnake extends Monster {
         }
         else {
             System.out.print(scream.toUpperCase());
-            super.growl();
+//            super.growl();
         }
     }
 
     @Override
     public void attack(){
         growl(true);
-        super.attack();
+//        super.attack();
         System.out.println("     ...and hid in the grass");
     }
 

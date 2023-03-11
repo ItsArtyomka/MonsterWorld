@@ -5,11 +5,12 @@ public class Zombie extends Monster {
     public Zombie(String name) {
         super(name + " the Zombie", 5);
     }
+
     // Overload this method to make SCREAMS
-    @Override
+//    @Override
     public void growl(){
         System.out.print(scream);
-        super.growl();
+//        super.growl();
     }
 
     // This method overloads growl() to make SCREAMS
@@ -26,5 +27,15 @@ public class Zombie extends Monster {
     public void attack(){
         super.attack();
         growl();
+    }
+
+    @Override
+    public void attack(Monster monster) {
+        damage(getForce());
+    }
+
+    @Override
+    protected int getForce() {
+        return force;
     }
 }

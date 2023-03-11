@@ -16,8 +16,8 @@ public class Main {
         // Creating new monster to check the logic in the run() method
         // therefore the two new monster will not be added to the array because by logic it will overflow the array
         // so it's not going to add them to the already filled array.
-        battle.add(new Zombie("Noname"));
-        battle.add(new GiantSnake("Noname"));
+//        battle.add(new Zombie("Noname"));
+//        battle.add(new GiantSnake("Noname"));
 
         // Calls start() method that calls the run method.
         battle.start();
