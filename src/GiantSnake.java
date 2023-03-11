@@ -6,7 +6,6 @@ public class GiantSnake extends Monster {
         super(name + " the GiantSnake", 5);
     }
 
-//    @Override
     public void growl(){
         System.out.print(scream);
     }
@@ -21,9 +20,10 @@ public class GiantSnake extends Monster {
         }
     }
 
-    @Override
+    // Snake implements the attack method that is in the Monster class.
     public void attack(Monster monster){
-        growl(true);
+        growl();
+        monster.damage(getForce());
         System.out.println("     ...and hid in the grass");
     }
 
