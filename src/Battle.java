@@ -1,47 +1,48 @@
-class Battle {
-    //---Fields---
-    final static int MAX_MONSTERS = 5;
-    int x = 0; // Used to track number of monsters in the monsters array.
-    Monster[] monsters;
+import java.util.Random;
 
-    //---Constructor---
+class Battle{
+
+    final static private int MAX = 5;
+
+    private Entity[] entities;
+    private int n = 0;
+
     Battle(){
-
-        // Creates an array with 5 empty spaces.
-        monsters = new Monster[MAX_MONSTERS];
+        entities = new Entity[MAX];
     }
 
-    //---Methods---
-    public void add(Monster monster){
-
-        // Check if there is available index for a new monster.
-        if (x < MAX_MONSTERS){
-
-            // This means that if there is available space in the array the new monster will be
-            // assigned to that index in the array and then the x will be incremented by 1. (post-increment operator)
-            monsters[x++] = monster;
-        } else {
-            System.out.println("No more monsters!");
+    public void add(Entity entity){
+        if (n < MAX) {
+            entities[n++] = entity;
+        }
+        else{
+            System.out.println("No more members!");
         }
     }
 
     public void run(){
-        // Looping through monsters array
-        for (int i = 0; i < monsters.length; i++) {
-
-            // Checking if space is not empty
-            if (monsters[i] != null){
-
-                // Calling attack() method of the monster at index i
-                // attack abstract method from class Monster is implemented into an array.
-                monsters[i].attack(monsters[i]);
+        Random random = new Random();
+        int destroyed = 0;
+        while (destroyed != n - 1){
+            Entity fighter = entities[random.nextInt(n)];
+            Entity victim = entities[random.nextInt(n)];
+            //find non destroyed Fighter and his victim
+            while (fighter == null || victim == null || !(fighter instanceof Fighter) || fighter == victim){
+                victim = entities[random.nextInt(n)];
+                fighter = entities[random.nextInt(n)];
+            }
+            ((Fighter)fighter).attack(victim);
+            if (victim.isDestroyed()){
+                victim = null;
+                destroyed++;
             }
         }
+
+        System.out.println("The Great Battle is finished");
+
     }
 
     public void start(){
-
-        // Calling the run() method separately as a standard practice in case if it's long process.
         run();
     }
 

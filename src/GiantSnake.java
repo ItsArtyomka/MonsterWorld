@@ -1,5 +1,5 @@
-public class GiantSnake extends Monster {
-
+// This monster class inherits Monster class and implements Fighter interface.
+public class GiantSnake extends Monster implements Fighter {
     public static String scream = "Ssssss";
 
     public GiantSnake(String name) {
@@ -7,24 +7,13 @@ public class GiantSnake extends Monster {
     }
 
     public void growl(){
-        System.out.print(scream);
+        System.out.println(scream);
     }
 
-    public void growl(boolean loud){
-        if (!loud) {
-            growl();
-        }
-        else {
-            System.out.print(scream.toUpperCase());
-//            super.growl();
-        }
-    }
-
-    // Snake implements the attack method that is in the Monster class.
-    public void attack(Monster monster){
+    // Implements the attack() method from Fighter interface.
+    public void attack(Entity entity) {
+        // attacking an entity with damage of force value via damage() from Entity class.
+        entity.damage(getForce());
         growl();
-        monster.damage(getForce());
-        System.out.println("     ...and hid in the grass");
     }
-
 }
