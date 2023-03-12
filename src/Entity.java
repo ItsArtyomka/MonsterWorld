@@ -1,13 +1,17 @@
-public abstract class Monster extends Entity implements Fighter{
+abstract class Entity {
+    //---Fields---
     private String name;
     private int force;
-    private int hp = 15;
-    private boolean destroyed = false;
+    private int hp;
+    private boolean destroyed;
 
-    public Monster(String name, int force) {
+    public Entity(){}
+    public Entity(String name) {
+        this.name = name;
+    }
+    public Entity(String name, int force){
         this.name = name;
         this.force = force;
-        System.out.println("Monster " + name + " was created");
     }
 
     protected int getForce(){
@@ -22,11 +26,9 @@ public abstract class Monster extends Entity implements Fighter{
         hp -= dhp;
         if (hp < 0){
             destroyed = true;
-            System.out.println("Monster " + name + " was destroyed");
+            System.out.println("Entity " + name + " was destroyed");
             return true;
         }
         return false;
     }
-
-    abstract public void attack(Entity entity);
 }

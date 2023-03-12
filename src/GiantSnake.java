@@ -1,4 +1,4 @@
-public class GiantSnake extends Monster {
+public class GiantSnake extends Monster implements Fighter {
 
     public static String scream = "Ssssss";
 
@@ -7,24 +7,11 @@ public class GiantSnake extends Monster {
     }
 
     public void growl(){
-        System.out.print(scream);
+        System.out.println(scream);
     }
 
-    public void growl(boolean loud){
-        if (!loud) {
-            growl();
-        }
-        else {
-            System.out.print(scream.toUpperCase());
-//            super.growl();
-        }
-    }
-
-    // Snake implements the attack method that is in the Monster class.
-    public void attack(Monster monster){
+    @Override
+    public void attack(Entity m){
         growl();
-        monster.damage(getForce());
-        System.out.println("     ...and hid in the grass");
     }
-
 }
