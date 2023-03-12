@@ -1,4 +1,4 @@
-public class Zombie extends Monster {
+public class Zombie extends Monster implements Fighter{
 
     public Zombie(String name) {
         super(name + " the Zombie", 5);
