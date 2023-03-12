@@ -1,4 +1,4 @@
-@SuppressWarnings("UnusedReturnValue")
+@SuppressWarnings({"UnusedReturnValue", "FieldMayBeFinal"})
 
 abstract class Entity {
     private String name;

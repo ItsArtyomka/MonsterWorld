@@ -8,5 +8,4 @@ public class Human extends Entity implements Fighter{
     public void attack(Entity entity){
         entity.damage(1);
     }
-
 }

@@ -1,3 +1,4 @@
+@SuppressWarnings("FieldMayBeFinal")
 public abstract class Monster extends Entity{
     private int force;
 
