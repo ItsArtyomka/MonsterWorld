@@ -5,8 +5,8 @@ public class Human extends Entity implements Fighter{
     }
 
     @Override
-    public void attack(Entity m){
-        m.damage(1);
+    public void attack(Entity entity){
+        entity.damage(1);
     }
 
 }

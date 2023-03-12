@@ -1,6 +1,8 @@
+@SuppressWarnings("UnusedReturnValue")
+
 abstract class Entity {
     private String name;
-    private int hp = 100;
+    private int hp = 20;
     private boolean destroyed;
 
     Entity(String name) {
